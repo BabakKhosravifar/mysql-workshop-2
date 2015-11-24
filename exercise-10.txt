@@ -1,0 +1,44 @@
+Exercise 10
+
+How many Address Book Entries are listed as born before February 12th of 1982?
+How many Address Book Entries are listed as born on or after January 1st of 1965?
+Which Address Book Entry is listed as being the oldest of age?
+==============================================================
+
+mysql> SELECT COUNT(*) FROM Entry WHERE birthday < "1982-02-12";
++----------+
+| COUNT(*) |
++----------+
+|     2687 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT COUNT(*) FROM Entry WHERE birthday >= "1965-01-01";
++----------+
+| COUNT(*) |
++----------+
+|     2597 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Entry ORDER BY birthday ASC LIMIT;  
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> SELECT * FROM Entry ORDER BY birthday ASC LIMIT 5;                                                                                                                    
++------+---------------+-----------+-----------+---------------------+-------+---------+--------------------------+----------------+------------------+----------------------------------------------+-----------------+
+| id   | addressBookId | firstName | lastName  | birthday            | type  | subtype | contentLineOne           | contentLineTwo | contentLineThree | contentLineFour                              | contentLineFive |
++------+---------------+-----------+-----------+---------------------+-------+---------+--------------------------+----------------+------------------+----------------------------------------------+-----------------+
+| 2260 |            93 | Abigail   | Rollins   | 1945-09-02 09:21:58 | other | address | 194 Non Road             | Berlin         | Berlin           | Bolivia                                      | 791155          |
+| 2700 |            37 | Charde    | Burns     | 1945-09-10 14:24:33 | home  | address | 245-7603 Nec Road        | Tirupati       | Andhra Pradesh   | Saint Helena, Ascension and Tristan da Cunha | C2P 6J8         |
+| 2973 |            99 | Aiko      | Valdez    | 1945-09-22 20:20:14 | work  | address | 7170 Ac Street           | Cedar Rapids   | Iowa             | Bosnia and Herzegovina                       | 18572           |
+| 1713 |            33 | Lev       | Stokes    | 1945-09-24 01:43:24 | work  | email   | Etiam.ligula@enimSed.net | NULL           | NULL             | NULL                                         | NULL            |
+|  333 |            33 | Dora      | Gallagher | 1945-09-26 01:13:24 | home  | phone   | (788) 742-1867           | NULL           | NULL             | NULL                                         | NULL            |
++------+---------------+-----------+-----------+---------------------+-------+---------+--------------------------+----------------+------------------+----------------------------------------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Entry ORDER BY birthday ASC LIMIT 1;                                                                                                                    
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id   | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| 2260 |            93 | Abigail   | Rollins  | 1945-09-02 09:21:58 | other | address | 194 Non Road   | Berlin         | Berlin           | Bolivia         | 791155          |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+1 row in set (0.00 sec)
