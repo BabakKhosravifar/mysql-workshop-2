@@ -1,0 +1,48 @@
+Exercise 4
+
+Modify the decodemtl_addressbook.Account row
+Modify the decodemtl_addressbook.AddressBook row
+Modify the three decodemtl_addressbook.Entry rows using one query only
+===========================================================================
+
+mysql> UPDATE Account SET modifiedOn = CURDATE() WHERE id<10;                                                                                                                
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Account;                                                                                                                                                
++----+----------------------------+--------------+---------------------+---------------------+
+| id | email                      | password     | createdOn           | modifiedOn          |
++----+----------------------------+--------------+---------------------+---------------------+
+|  1 | Babak.Khosraviar@gmail.com | the password | 2015-11-23 00:00:00 | 2015-11-24 00:00:00 |
++----+----------------------------+--------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE AddressBook SET name = "Babak K. Khosravifar", modifiedOn = CURDATE() WHERE id=1;                                                                              
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from AddressBook;
++----+-----------+----------------------+---------------------+---------------------+
+| id | accountId | name                 | createdOn           | modifiedOn          |
++----+-----------+----------------------+---------------------+---------------------+
+|  1 |   2625273 | Babak K. Khosravifar | 2015-11-23 00:00:00 | 2015-11-24 00:00:00 |
++----+-----------+----------------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE Entry SET contentLineThree = "montreal" WHERE addressBookId<4;                                                                                                 
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE Entry SET contentLineThree = "montreal" WHERE id<4;                                                                                                            
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from Entry;
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName    | birthday            | type  | subtype | contentLineOne            | contentLineTwo   | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+|  1 |            24 | Babak     | Khosravifar | 1982-08-26 00:00:00 | home  | address | 1645                      | Maisonneuve West | montreal         | Quebec          | Canada          |
+|  2 |            21 | Samantha  | Perth       | 1984-10-16 00:00:00 | other | address | 299                       | Rotonde          | montreal         | Quebec          | Canada          |
+|  3 |            24 | Hayel     | Saeed       | 1987-11-03 00:00:00 | work  | email   | Hayel.Saeed@Mentorina.com | NULL             | montreal         | NULL            | NULL            |
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
