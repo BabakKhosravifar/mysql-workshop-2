@@ -1,0 +1,32 @@
+Exercise 3
+
+Retrieve data from the previously inserted decodemtl_addressbook.Account row
+Retrieve data from the previously inserted decodemtl_addressbook.AddressBook row
+Retrieve data from the previously inserted decodemtl_addressbook.Entry rows
+==================================================================
+
+mysql> select * from Account;
++----+----------------------------+--------------+---------------------+------------+
+| id | email                      | password     | createdOn           | modifiedOn |
++----+----------------------------+--------------+---------------------+------------+
+|  1 | Babak.Khosraviar@gmail.com | the password | 2015-11-23 00:00:00 | NULL       |
++----+----------------------------+--------------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from AddressBook;                                                                                                                                            
++----+-----------+-------------------+---------------------+------------+
+| id | accountId | name              | createdOn           | modifiedOn |
++----+-----------+-------------------+---------------------+------------+
+|  1 |   2625273 | Babak Khosravifar | 2015-11-23 00:00:00 | NULL       |
++----+-----------+-------------------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Entry;
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName    | birthday            | type  | subtype | contentLineOne            | contentLineTwo   | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+|  1 |            24 | Babak     | Khosravifar | 1982-08-26 00:00:00 | home  | address | 1645                      | Maisonneuve West | Montreal         | Quebec          | Canada          |
+|  2 |            21 | Samantha  | Perth       | 1984-10-16 00:00:00 | other | address | 299                       | Rotonde          | Verdun           | Quebec          | Canada          |
+|  3 |            24 | Hayel     | Saeed       | 1987-11-03 00:00:00 | work  | email   | Hayel.Saeed@Mentorina.com | NULL             | NULL             | NULL            | NULL            |
++----+---------------+-----------+-------------+---------------------+-------+---------+---------------------------+------------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
